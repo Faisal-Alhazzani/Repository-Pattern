@@ -9,13 +9,10 @@ namespace Vidly.Data
 {
     public class VidlyDB : DbContext
     {
+       public VidlyDB(DbContextOptions<VidlyDB> options)
+            : base(options){ }
         public DbSet<CustomerEntity> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=Vidly;Trusted_Connection=True;");
-        }
 
     }
 }
